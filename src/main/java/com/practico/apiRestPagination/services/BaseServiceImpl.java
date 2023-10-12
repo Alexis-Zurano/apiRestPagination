@@ -3,6 +3,9 @@ package com.practico.apiRestPagination.services;
 import com.practico.apiRestPagination.entities.Base;
 import com.practico.apiRestPagination.repositories.BaseRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +23,17 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     public List<E> findAll() throws Exception {
         try {
             List<E> entities = baseRepository.findAll();
+            return entities;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Page<E> findALL(Pageable pageable) throws Exception {
+        try {
+            Page<E> entities = baseRepository.findAll(pageable);
             return entities;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
