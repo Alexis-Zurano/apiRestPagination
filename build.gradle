@@ -40,6 +40,6 @@ tasks.named('test') {
 
 jar {
 	manifest {
-		attributes 'apiRestApplication': 'com.practico.apiRest.apiRestApplication'
+		attributes 'ApiRestApplication': 'com.practico.apiRestPagination.ApiRestApplication'
 	}
 }
